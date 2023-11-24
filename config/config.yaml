@@ -1,0 +1,10 @@
+env: "local"
+http_client:
+  base_url: "https://www.rusprofile.ru"
+  timeout: 5s
+grpc:
+  port: 9000
+  timeout: 5s
+grpc_gw:
+  port: 8000
+  timeout: 5s

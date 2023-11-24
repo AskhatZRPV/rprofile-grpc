@@ -1,0 +1,103 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "proto/rprofile/rprofile.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "CompanyInfo"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/search_info": {
+      "get": {
+        "summary": "Search Info takes inn as a input parameter and returns response",
+        "operationId": "CompanyInfo_SearchInfo",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/rusprofileSearchInfoResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "inn",
+            "description": "Inn.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "CompanyInfo"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "rusprofileSearchInfoResponse": {
+      "type": "object",
+      "properties": {
+        "inn": {
+          "type": "string",
+          "description": "INN."
+        },
+        "kpp": {
+          "type": "string",
+          "description": "KPP."
+        },
+        "companyName": {
+          "type": "string",
+          "description": "Company Name."
+        },
+        "leaderName": {
+          "type": "string",
+          "description": "Company Leader Name."
+        }
+      }
+    }
+  }
+}

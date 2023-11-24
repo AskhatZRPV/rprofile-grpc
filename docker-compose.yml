@@ -1,0 +1,12 @@
+version: "3.8"
+services: 
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      CONFIG_PATH: config/config.yaml
+    ports:
+    - "8000:8000"
+    - "9000:9000"
+    restart: always
