@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package rusprofile;
+
+option go_package = "github.com/AskhatZRPV/rprofile-grpc/gen/go/rprofilev1;rprofilev1";
+
+import "google/api/annotations.proto";
+
+message SearchInfoRequest {
+    string inn = 1; // Inn.
+}
+
+message SearchInfoResponse {
+    string inn = 1; // INN.
+    string kpp = 2; // KPP.
+    string companyName = 3; // Company Name.
+    string leaderName = 4; // Company Leader Name.
+}
+
+// CompanyInfo is service for parsing company info from rusprofile by inn.
+service CompanyInfo {
+  // SearchInfo takes INN as am input parameter and returns company info
+  rpc SearchInfo (SearchInfoRequest) returns (SearchInfoResponse) {
+    option (google.api.http) = {
+      get: "/search_info"
+    };
+  }
+    
+}
